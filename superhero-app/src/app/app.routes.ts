@@ -5,7 +5,7 @@ export const routes: Routes = [
   {
     path: 'heroes',
     loadChildren: () => 
-      import('./features/heroes/heroes.routes')
+      import('./features/heroes/heroes-routes')
         .then(m => m.HEROES_ROUTES)
   },
   { 

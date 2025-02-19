@@ -1,24 +1,33 @@
 {
-    "heroes": [
-      {
-        "id": "1",
-        "name": "Spider-Man",
-        "alterEgo": "Peter Parker",
-        "powers": ["Web-shooting", "Wall-crawling", "Super strength"],
-        "publisher": "Marvel Comics",
-        "firstAppearance": "1962-08-01T00:00:00.000Z",
-        "createdAt": "2024-02-19T10:00:00.000Z",
-        "updatedAt": "2024-02-19T10:00:00.000Z"
-      },
-      {
-        "id": "2",
-        "name": "Batman",
-        "alterEgo": "Bruce Wayne",
-        "powers": ["Intelligence", "Martial Arts", "Technology"],
-        "publisher": "DC Comics",
-        "firstAppearance": "1939-05-01T00:00:00.000Z",
-        "createdAt": "2024-02-19T10:00:00.000Z",
-        "updatedAt": "2024-02-19T10:00:00.000Z"
-      }
-    ]
-  }
+  "heroes": [
+    {
+      "id": "1",
+      "name": "SPIDER-MAN",
+      "alterEgo": "Peter Parker",
+      "powers": [
+        "Wall-crawling",
+        "Spider-sense",
+        "Super strength",
+        "SpiderMan"
+      ],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1962-08-15",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2025-02-19T15:13:58.316Z"
+    },
+    {
+      "id": "2",
+      "name": "BATMAN",
+      "alterEgo": "Bruce Wayne",
+      "powers": [
+        "Intelligence",
+        "Martial Arts",
+        "Wealth"
+      ],
+      "publisher": "DC Comics",
+      "firstAppearance": "1939-05-01",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    }
+  ]
+}

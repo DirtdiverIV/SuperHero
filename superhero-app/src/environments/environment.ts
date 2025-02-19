@@ -2,6 +2,5 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:3000',
-    apiTimeout: 10000,
-    defaultPageSize: 10,
+    defaultPageSize: 10
   };
