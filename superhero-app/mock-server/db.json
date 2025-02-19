@@ -1,0 +1,24 @@
+{
+    "heroes": [
+      {
+        "id": "1",
+        "name": "Spider-Man",
+        "alterEgo": "Peter Parker",
+        "powers": ["Web-shooting", "Wall-crawling", "Super strength"],
+        "publisher": "Marvel Comics",
+        "firstAppearance": "1962-08-01T00:00:00.000Z",
+        "createdAt": "2024-02-19T10:00:00.000Z",
+        "updatedAt": "2024-02-19T10:00:00.000Z"
+      },
+      {
+        "id": "2",
+        "name": "Batman",
+        "alterEgo": "Bruce Wayne",
+        "powers": ["Intelligence", "Martial Arts", "Technology"],
+        "publisher": "DC Comics",
+        "firstAppearance": "1939-05-01T00:00:00.000Z",
+        "createdAt": "2024-02-19T10:00:00.000Z",
+        "updatedAt": "2024-02-19T10:00:00.000Z"
+      }
+    ]
+  }
