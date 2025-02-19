@@ -1,5 +1,3 @@
 {
-    "/api/*": "/$1",
-    "/heroes": "/heroes?_page=:page&_limit=:pageSize",
-    "/heroes/:id": "/heroes/:id"
+    "/api/*": "/$1"
   }

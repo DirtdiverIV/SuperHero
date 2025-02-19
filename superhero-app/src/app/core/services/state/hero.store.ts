@@ -90,8 +90,13 @@ export class HeroStore {
   loadHeroes(filters?: Partial<HeroFilters>) {
     this.state.update(s => ({ ...s, loading: true }));
     const currentFilters = this.state().filters;
-    const newFilters = { ...currentFilters, ...filters };
-
+    // Incorporamos el término de búsqueda actual en los filtros
+    const newFilters = { 
+      ...currentFilters, 
+      ...filters, 
+      name: this.searchTerm() // Agregamos el searchTerm aquí
+    };
+  
     runInInjectionContext(this.injector, () => {
       this.heroService.getHeroes(newFilters).pipe(
         takeUntilDestroyed()
