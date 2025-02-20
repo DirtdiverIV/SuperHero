@@ -1,3 +1,25 @@
-.content {
-    padding: 20px;
-  }
+/* src/app/app.component.scss */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-toolbar {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.app-content {
+  flex: 1;
+  padding: 5rem 1rem 1rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+}

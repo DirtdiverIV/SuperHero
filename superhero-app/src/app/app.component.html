@@ -1,8 +1,19 @@
-<!-- app.component.html -->
-<mat-toolbar color="primary">
-  <span>{{title}}</span>
-</mat-toolbar>
+<!-- src/app/app.component.html -->
+<div class="app-container">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <div class="flex items-center gap-4">
+      <span class="hero-title text-2xl">{{title}}</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button mat-icon-button aria-label="Toggle theme">
+        <mat-icon>dark_mode</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
 
-<router-outlet />
+  <main class="app-content">
+    <router-outlet />
+  </main>
 
-<app-loading />
+  <app-loading />
+</div>
