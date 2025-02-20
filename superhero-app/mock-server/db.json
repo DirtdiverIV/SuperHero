@@ -2,30 +2,166 @@
   "heroes": [
     {
       "id": "1",
-      "name": "SPIDER-MAN",
-      "alterEgo": "Peter Parker",
-      "powers": [
-        "Wall-crawling",
-        "Spider-sense",
-        "Super strength",
-        "SpiderMan"
-      ],
-      "publisher": "Marvel Comics",
-      "firstAppearance": "1962-08-15",
+      "name": "WONDER WOMAN",
+      "alterEgo": "Diana Prince",
+      "powers": ["Superfuerza", "Vuelo", "Resistencia sobrehumana", "Lazo de la verdad"],
+      "publisher": "DC Comics",
+      "firstAppearance": "1941-12-01",
+      "imageUrl": "https://i.imgur.com/cfoNEtO.png",
       "createdAt": "2024-02-19T12:00:00.000Z",
-      "updatedAt": "2025-02-19T15:13:58.316Z"
+      "updatedAt": "2024-02-19T12:00:00.000Z"
     },
     {
       "id": "2",
+      "name": "WINTER SOLDIER",
+      "alterEgo": "James Buchanan Barnes",
+      "powers": ["Fuerza mejorada", "Brazo biónico", "Experto en combate", "Maestro asesino"],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1941-03-01",
+      "imageUrl": "https://i.imgur.com/9ME2lND.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "STAR-LORD",
+      "alterEgo": "Peter Quill",
+      "powers": ["Experto táctico", "Maestro del combate", "Tecnología avanzada", "Elemento celestial"],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1976-01-01",
+      "imageUrl": "https://i.imgur.com/5gMLQvy.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "MERA",
+      "alterEgo": "Y'Mera Xebella Challa",
+      "powers": ["Hidrokinesis", "Respiración acuática", "Fuerza sobrehumana", "Telepatía acuática"],
+      "publisher": "DC Comics",
+      "firstAppearance": "1963-11-01",
+      "imageUrl": "https://i.imgur.com/Fb1YJa8.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "name": "LUZ ESTELAR",
+      "alterEgo": "Annie January",
+      "powers": ["Vuelo", "Manipulación de luz", "Proyección de energía", "Resistencia sobrehumana"],
+      "publisher": "The Boys",
+      "firstAppearance": "2006-01-01",
+      "imageUrl": "https://i.imgur.com/fiRF3km.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "name": "LOBEZNO",
+      "alterEgo": "James Howlett",
+      "powers": ["Factor curativo", "Garras de adamantium", "Sentidos mejorados", "Longevidad"],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1974-10-01",
+      "imageUrl": "https://i.imgur.com/Ili1bMC.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "name": "JOKER",
+      "alterEgo": "Desconocido",
+      "powers": ["Genio criminal", "Inmunidad a toxinas", "Maestro del caos", "Manipulación psicológica"],
+      "publisher": "DC Comics",
+      "firstAppearance": "1940-04-25",
+      "imageUrl": "https://i.imgur.com/CJi6M5z.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "name": "HUEY CAMPBELL",
+      "alterEgo": "Hugh Campbell",
+      "powers": ["Inteligencia", "Determinación", "Habilidad táctica", "Adaptabilidad"],
+      "publisher": "The Boys",
+      "firstAppearance": "2006-01-01",
+      "imageUrl": "https://i.imgur.com/0RVz727.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "name": "HARLEY QUINN",
+      "alterEgo": "Harleen Frances Quinzel",
+      "powers": ["Agilidad sobrehumana", "Inmunidad a toxinas", "Experta en gimnasia", "Genio de la química"],
+      "publisher": "DC Comics",
+      "firstAppearance": "1992-09-11",
+      "imageUrl": "https://i.imgur.com/DYggTRt.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "10",
+      "name": "GAMORA",
+      "alterEgo": "Gamora Zen Whoberi Ben Titan",
+      "powers": ["Fuerza sobrehumana", "Agilidad mejorada", "Factor curativo", "Maestra asesina"],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1975-06-01",
+      "imageUrl": "https://i.imgur.com/pgk4HFT.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "name": "DEADPOOL",
+      "alterEgo": "Wade Wilson",
+      "powers": ["Factor curativo", "Inmortalidad", "Maestro asesino", "Romper la cuarta pared"],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1991-02-01",
+      "imageUrl": "https://i.imgur.com/aYIjOcF.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "12",
+      "name": "CATWOMAN",
+      "alterEgo": "Selina Kyle",
+      "powers": ["Agilidad felina", "Experta ladrona", "Maestra del sigilo", "Habilidades acrobáticas"],
+      "publisher": "DC Comics",
+      "firstAppearance": "1940-04-01",
+      "imageUrl": "https://i.imgur.com/n8dFioG.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "13",
+      "name": "CAPITÁN AMÉRICA",
+      "alterEgo": "Steven Grant Rogers",
+      "powers": ["Suero del súper soldado", "Maestro estratega", "Fuerza sobrehumana", "Escudo de vibranium"],
+      "publisher": "Marvel Comics",
+      "firstAppearance": "1941-03-01",
+      "imageUrl": "https://i.imgur.com/zH0YgOV.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "14",
       "name": "BATMAN",
       "alterEgo": "Bruce Wayne",
-      "powers": [
-        "Intelligence",
-        "Martial Arts",
-        "Wealth"
-      ],
+      "powers": ["Genio detective", "Maestro artista marcial", "Experto táctico", "Vasto arsenal tecnológico"],
       "publisher": "DC Comics",
       "firstAppearance": "1939-05-01",
+      "imageUrl": "https://i.imgur.com/QkDsnn9.png",
+      "createdAt": "2024-02-19T12:00:00.000Z",
+      "updatedAt": "2024-02-19T12:00:00.000Z"
+    },
+    {
+      "id": "15",
+      "name": "AQUAMAN",
+      "alterEgo": "Arthur Curry",
+      "powers": ["Telepatía acuática", "Respiración subacuática", "Fuerza atlante", "Control de los mares"],
+      "publisher": "DC Comics",
+      "firstAppearance": "1941-11-01",
+      "imageUrl": "https://i.imgur.com/XHf7UnS.png",
       "createdAt": "2024-02-19T12:00:00.000Z",
       "updatedAt": "2024-02-19T12:00:00.000Z"
     }

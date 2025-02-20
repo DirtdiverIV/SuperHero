@@ -4,16 +4,16 @@
 // Incluimos los estilos comunes de Angular Material
 @include mat.core();
 
-// Tema claro
-$light-theme: mat.define-theme((
+// Definimos nuestro tema de superhéroes usando paletas predefinidas de Material
+$superhero-theme: mat.define-theme((
   color: (
-    theme-type: light,
-    primary: mat.$violet-palette,
-    tertiary: mat.$rose-palette
+    theme-type: dark,
+    primary: mat.$blue-palette,
+    tertiary: mat.$orange-palette
   ),
   typography: (
     brand-family: 'Bangers',
-    plain-family: 'Outfit',
+    plain-family: 'Roboto',
     bold-weight: 700,
     medium-weight: 500,
     regular-weight: 400
@@ -23,77 +23,52 @@ $light-theme: mat.define-theme((
   )
 ));
 
-// Tema oscuro
-$dark-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$violet-palette,
-    tertiary: mat.$rose-palette
-  ),
-  // Heredamos la misma configuración de tipografía y densidad
-  typography: map-get($light-theme, typography),
-  density: map-get($light-theme, density)
-));
-
-// Aplicamos el tema claro por defecto
+// Aplicamos el tema
 :root {
-  @include mat.all-component-themes($light-theme);
+  @include mat.all-component-themes($superhero-theme);
 }
-
-// Aplicamos el tema oscuro basado en la preferencia del sistema
-@media (prefers-color-scheme: dark) {
-  :root {
-    @include mat.all-component-colors($dark-theme);
-  }
-}
-
-// Habilitamos los indicadores de foco fuertes para mejor accesibilidad
-@include mat.strong-focus-indicators();
-@include mat.strong-focus-indicators-theme($light-theme);
 
 // Importamos las fuentes
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;500;700&display=swap');
 
-// Estilos globales y utilidades
-html, body { 
-  height: 100%; 
+// Estilos globales
+html, body {
+  height: 100%;
   margin: 0;
+  background-color: #1a1a1a;
+  color: white;
 }
 
-body { 
-  font-family: 'Outfit', sans-serif;
+body {
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Utilidades de texto
+// Utilidades y estilos personalizados
 .hero-title {
   font-family: 'Bangers', cursive;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-// Utilidades de color y superficie
-.surface-container {
-  background-color: var(--mat-surface-container);
-  border-radius: var(--mat-border-radius);
-  padding: 1rem;
+.hero-card {
+  background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(33, 150, 243, 0.2);
+  }
 }
 
-.bg-primary { background-color: var(--mat-primary-color); }
-.bg-tertiary { background-color: var(--mat-tertiary-color); }
-.text-primary { color: var(--mat-primary-color); }
-.text-tertiary { color: var(--mat-tertiary-color); }
-
-// Utilidades de espaciado consistente con Material
-.m-2 { margin: 0.5rem; }
-.m-4 { margin: 1rem; }
-.p-2 { padding: 0.5rem; }
-.p-4 { padding: 1rem; }
-
-// Utilidades de layout
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.gap-2 { gap: 0.5rem; }
-.gap-4 { gap: 1rem; }
+.power-chip {
+  background: linear-gradient(45deg, #1976d2, #2196f3);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
