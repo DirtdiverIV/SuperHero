@@ -51,7 +51,7 @@ export class HeroStore {
       // Efecto para búsqueda reactiva
       effect(() => {
         toObservable(this.searchTerm).pipe(
-          debounceTime(300),
+          debounceTime(100),
           distinctUntilChanged(),
           takeUntilDestroyed(),
           switchMap(term => {

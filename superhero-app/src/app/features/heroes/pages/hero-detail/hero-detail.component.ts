@@ -11,7 +11,6 @@ import { HeroFormComponent } from '../../components/hero-form/hero-form.componen
   imports: [CommonModule, HeroFormComponent],
   template: `
     <div class="p-4">
-      <h1 class="text-2xl mb-4">{{isEditMode ? 'Editar' : 'Crear'}} Héroe</h1>
       <app-hero-form />
     </div>
   `

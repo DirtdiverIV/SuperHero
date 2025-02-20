@@ -30,7 +30,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
   template: `
     <mat-card class="hero-form-card">
       <mat-card-header>
-        <mat-card-title class="hero-title">
+        <mat-card-title class="form-title">
           {{editMode() ? 'Editar' : 'Crear'}} Héroe
         </mat-card-title>
       </mat-card-header>
@@ -39,38 +39,38 @@ import { MatChipInputEvent } from '@angular/material/chips';
         <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="hero-form">
           <div class="form-grid">
             <div class="form-col">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Nombre</mat-label>
                 <input matInput 
-                       formControlName="name" 
-                       appUppercaseInput 
-                       required>
+                      formControlName="name" 
+                      appUppercaseInput 
+                      required>
                 @if (heroForm.get('name')?.hasError('required') && heroForm.get('name')?.touched) {
                   <mat-error>El nombre es requerido</mat-error>
                 }
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Identidad Secreta</mat-label>
                 <input matInput formControlName="alterEgo">
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Editorial</mat-label>
                 <input matInput 
-                       formControlName="publisher" 
-                       required>
+                      formControlName="publisher" 
+                      required>
                 @if (heroForm.get('publisher')?.hasError('required') && heroForm.get('publisher')?.touched) {
                   <mat-error>La editorial es requerida</mat-error>
                 }
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Primera Aparición</mat-label>
                 <input matInput 
-                       type="date" 
-                       formControlName="firstAppearance" 
-                       required>
+                      type="date" 
+                      formControlName="firstAppearance" 
+                      required>
                 @if (heroForm.get('firstAppearance')?.hasError('required') && heroForm.get('firstAppearance')?.touched) {
                   <mat-error>La fecha de primera aparición es requerida</mat-error>
                 }
@@ -78,25 +78,25 @@ import { MatChipInputEvent } from '@angular/material/chips';
             </div>
 
             <div class="form-col">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>URL de la imagen</mat-label>
                 <input matInput 
-                       formControlName="imageUrl" 
-                       placeholder="https://ejemplo.com/imagen.jpg" 
-                       required>
+                      formControlName="imageUrl" 
+                      placeholder="https://ejemplo.com/imagen.jpg" 
+                      required>
                 @if (heroForm.get('imageUrl')?.hasError('required') && heroForm.get('imageUrl')?.touched) {
                   <mat-error>La imagen es requerida</mat-error>
                 }
-                <mat-hint>La imagen debe tener un tamaño de 120x220 píxeles</mat-hint>
+                <mat-hint>La imagen debe tener un tamaño recomendado de 120x220 píxeles</mat-hint>
               </mat-form-field>
 
               <div class="preview-wrapper">
                 <div class="image-preview-container">
                   @if (heroForm.get('imageUrl')?.value) {
                     <img [src]="heroForm.get('imageUrl')?.value" 
-                         alt="Preview" 
-                         class="image-preview"
-                         (error)="handleImageError($event)">
+                        alt="Preview" 
+                        class="image-preview"
+                        (error)="handleImageError($event)">
                   } @else {
                     <div class="image-placeholder">
                       <mat-icon>image</mat-icon>
@@ -106,7 +106,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
                 </div>
               </div>
 
-              <mat-form-field appearance="outline" class="powers-field">
+              <mat-form-field appearance="outline" class="custom-form-field powers-field">
                 <mat-label>Poderes</mat-label>
                 <mat-chip-grid #chipGrid aria-label="Poderes del héroe">
                   @for (power of powers; track power) {
@@ -119,8 +119,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
                   }
                 </mat-chip-grid>
                 <input placeholder="Nuevo poder..."
-                       [matChipInputFor]="chipGrid"
-                       (matChipInputTokenEnd)="addPower($event)">
+                      [matChipInputFor]="chipGrid"
+                      (matChipInputTokenEnd)="addPower($event)">
               </mat-form-field>
             </div>
           </div>
@@ -148,17 +148,18 @@ import { MatChipInputEvent } from '@angular/material/chips';
     .hero-form-card {
       max-width: 1000px;
       margin: 2rem auto;
-      background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      background: #1a1a1a;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .hero-title {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      background: linear-gradient(90deg, #fff, #bbdefb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .form-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 18px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
     }
 
     .hero-form {
@@ -212,7 +213,6 @@ import { MatChipInputEvent } from '@angular/material/chips';
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background-color: #1a1a1a;
     }
 
     .image-placeholder {
@@ -264,39 +264,55 @@ import { MatChipInputEvent } from '@angular/material/chips';
         font-size: 1rem;
 
         &[color="primary"] {
-          background: linear-gradient(45deg, #1976d2, #2196f3);
+          background: linear-gradient(45deg, #1976d2, #2196f3) !important;
 
           &:hover:not(:disabled) {
-            background: linear-gradient(45deg, #1565c0, #1976d2);
+            background: linear-gradient(45deg, #1565c0, #1976d2) !important;
           }
         }
       }
     }
 
     :host ::ng-deep {
-      .mat-mdc-form-field {
+      .custom-form-field {
         width: 100%;
+
+        .mat-mdc-form-field-flex {
+          background-color: #1a1a1a !important;
+        }
+
+        .mdc-text-field--outlined {
+          --mdc-theme-primary: #2196f3;
+          --mdc-theme-error: #f44336;
+          background-color: #1a1a1a !important;
+        }
+
+        .mdc-text-field__input {
+          caret-color: #2196f3;
+        }
+
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        .mat-mdc-form-field-hint {
+          color: rgba(255, 255, 255, 0.6);
+        }
+
+        input {
+          color: white;
+        }
+
+        .mat-mdc-form-field-label {
+          color: rgba(255, 255, 255, 0.6);
+        }
       }
 
       .mat-mdc-chip-set {
-        min-height: 48px;
-      }
-
-      .mat-mdc-form-field-flex {
-        background-color: rgba(255, 255, 255, 0.05);
-      }
-
-      .mat-mdc-text-field-wrapper {
-        background-color: transparent;
-      }
-
-      .mdc-text-field--outlined {
-        --mdc-theme-primary: #2196f3;
-        --mdc-theme-error: #f44336;
-      }
-
-      .mat-mdc-form-field-hint {
-        color: rgba(255, 255, 255, 0.6);
+        --mdc-chip-elevated-container-color: #2a2a2a;
+        --mdc-chip-label-text-color: white;
       }
     }
   `]

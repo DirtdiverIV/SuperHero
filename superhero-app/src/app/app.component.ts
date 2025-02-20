@@ -21,8 +21,8 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
       <mat-toolbar class="app-toolbar">
         <div class="toolbar-content">
           <div class="logo-section">
-            <mat-icon class="hero-icon">security</mat-icon>
-            <h1 class="hero-title">{{title}}</h1>
+            <mat-icon class="logo-icon">bolt</mat-icon>
+            <span class="logo-text">{{title}}</span>
           </div>
         </div>
       </mat-toolbar>
@@ -39,16 +39,19 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background-color: #1a1a1a;
     }
 
     .app-toolbar {
-      background: linear-gradient(90deg, #1565c0, #0d47a1);
+      background: #1a1a1a;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      height: 64px;
+      padding: 0 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .toolbar-content {
@@ -58,36 +61,44 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 100%;
     }
 
     .logo-section {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 12px;
     }
 
-    .hero-icon {
-      font-size: 2rem;
-      width: 2rem;
-      height: 2rem;
+    .logo-icon {
+      color: #2196f3;
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
     }
 
-    .hero-title {
-      margin: 0;
-      font-size: 2rem;
-      background: linear-gradient(90deg, #fff, #bbdefb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    .logo-text {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 18px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 400;
     }
 
     .app-content {
       flex: 1;
-      padding: 5rem 1rem 1rem;
+      padding: 80px 24px 24px;
       margin: 0 auto;
       width: 100%;
       max-width: 1280px;
       box-sizing: border-box;
+    }
+
+    :host ::ng-deep {
+      .mat-toolbar-single-row {
+        padding: 0;
+      }
     }
   `]
 })

@@ -4,15 +4,15 @@
 // Incluimos los estilos comunes de Angular Material
 @include mat.core();
 
-// Definimos nuestro tema de superhéroes usando paletas predefinidas de Material
+// Definimos nuestro tema personalizado
 $superhero-theme: mat.define-theme((
   color: (
     theme-type: dark,
     primary: mat.$blue-palette,
-    tertiary: mat.$orange-palette
+    tertiary: mat.$blue-palette
   ),
   typography: (
-    brand-family: 'Bangers',
+    brand-family: 'Press Start 2P',
     plain-family: 'Roboto',
     bold-weight: 700,
     medium-weight: 500,
@@ -29,7 +29,7 @@ $superhero-theme: mat.define-theme((
 }
 
 // Importamos las fuentes
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap');
 
 // Estilos globales
 html, body {
@@ -47,9 +47,10 @@ body {
 
 // Utilidades y estilos personalizados
 .hero-title {
-  font-family: 'Bangers', cursive;
+  font-family: 'Press Start 2P', cursive;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  font-size: 1.5rem !important;
 }
 
 .hero-card {
@@ -71,4 +72,77 @@ body {
   border-radius: 16px;
   font-size: 0.875rem;
   box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+// Fix para los inputs
+.mat-mdc-text-field-wrapper {
+  background-color: #1a1a1a !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #1a1a1a !important;
+}
+
+// Fix para el header
+.dashboard-header {
+  background: #1a1a1a !important;
+}
+
+// Fix para los botones
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: #1976d2;
+  --mdc-protected-button-label-text-color: #ffffff;
+  background: linear-gradient(45deg, #1976d2, #2196f3) !important;
+  color: white !important;
+  
+  &:hover:not(:disabled) {
+    background: linear-gradient(45deg, #1565c0, #1976d2) !important;
+  }
+
+  &:disabled {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.38) !important;
+  }
+
+  .mdc-button__label {
+    color: white !important;
+  }
+}
+
+// Fix específico para el botón de crear héroe
+.create-button {
+  --mdc-protected-button-container-color: #1976d2 !important;
+  --mdc-protected-button-label-text-color: #ffffff !important;
+  background: linear-gradient(45deg, #1976d2, #2196f3) !important;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2) !important;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(45deg, #1565c0, #1976d2) !important;
+  }
+
+  .mdc-button__label {
+    font-family: 'Roboto', sans-serif !important;
+    color: white !important;
+  }
+
+  mat-icon {
+    color: white !important;
+  }
+}
+
+// Fix para el botón cancelar y otros botones base
+.mat-mdc-button {
+  color: white !important;
+  
+  .mdc-button__label {
+    color: white !important;
+  }
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &:disabled {
+    color: rgba(255, 255, 255, 0.38) !important;
+  }
 }

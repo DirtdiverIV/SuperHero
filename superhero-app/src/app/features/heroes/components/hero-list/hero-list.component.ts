@@ -63,7 +63,7 @@ import { ConfirmationDialogComponent } from '../../../../shared/components/confi
     [length]="total()"
     [pageSize]="pageSize()"
     [pageIndex]="currentPage()"
-    [pageSizeOptions]="[6, 12, 24]"
+    [pageSizeOptions]="[9, 18, 27]"
     (page)="onPageChange($event)"
     aria-label="Seleccionar página">
   </mat-paginator>

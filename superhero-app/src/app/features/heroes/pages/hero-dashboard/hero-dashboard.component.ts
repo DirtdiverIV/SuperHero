@@ -43,7 +43,7 @@ import { HeroStore } from '../../../../core/services/state/hero.store';
     }
 
     .dashboard-header {
-      background: linear-gradient(145deg, #1a237e, #0d47a1);
+      background: linear-gradient(145deg, #1a1a1a, #262626);
       margin: -1rem -1rem 0;
       padding: 2rem 1rem;
       border-radius: 0 0 24px 24px;

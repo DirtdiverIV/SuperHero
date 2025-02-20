@@ -9,10 +9,11 @@ export const loadingInterceptor: HttpInterceptorFn = (
   next: HttpHandlerFn
 ) => {
   const loadingService = inject(LoadingService);
-  loadingService.show();
+  const loadingTimeout = setTimeout(() => loadingService.show(), 100);
 
   return next(req).pipe(
     finalize(() => {
+      clearTimeout(loadingTimeout);
       loadingService.hide();
     })
   );
