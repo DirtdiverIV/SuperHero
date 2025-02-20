@@ -1,40 +1,99 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+// src/styles.scss
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+// Incluimos los estilos comunes de Angular Material
 @include mat.core();
 
-// Define the theme object.
-$superhero-app-theme: mat.define-theme((
+// Tema claro
+$light-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
+    primary: mat.$violet-palette,
+    tertiary: mat.$rose-palette
+  ),
+  typography: (
+    brand-family: 'Bangers',
+    plain-family: 'Outfit',
+    bold-weight: 700,
+    medium-weight: 500,
+    regular-weight: 400
   ),
   density: (
-    scale: 0,
+    scale: 0
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Tema oscuro
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$violet-palette,
+    tertiary: mat.$rose-palette
+  ),
+  // Heredamos la misma configuración de tipografía y densidad
+  typography: map-get($light-theme, typography),
+  density: map-get($light-theme, density)
+));
+
+// Aplicamos el tema claro por defecto
 :root {
-  @include mat.all-component-themes($superhero-app-theme);
+  @include mat.all-component-themes($light-theme);
 }
 
-// Comment out the line below if you want to use the pre-defined typography utility classes.
-// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-// @include mat.typography-hierarchy($superhero-app-theme);
+// Aplicamos el tema oscuro basado en la preferencia del sistema
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include mat.all-component-colors($dark-theme);
+  }
+}
 
-// Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($superhero-app-theme);
-/* You can add global styles to this file, and also import other style files */
+// Habilitamos los indicadores de foco fuertes para mejor accesibilidad
+@include mat.strong-focus-indicators();
+@include mat.strong-focus-indicators-theme($light-theme);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Importamos las fuentes
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@400;500;700&display=swap');
+
+// Estilos globales y utilidades
+html, body { 
+  height: 100%; 
+  margin: 0;
+}
+
+body { 
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Utilidades de texto
+.hero-title {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.05em;
+}
+
+// Utilidades de color y superficie
+.surface-container {
+  background-color: var(--mat-surface-container);
+  border-radius: var(--mat-border-radius);
+  padding: 1rem;
+}
+
+.bg-primary { background-color: var(--mat-primary-color); }
+.bg-tertiary { background-color: var(--mat-tertiary-color); }
+.text-primary { color: var(--mat-primary-color); }
+.text-tertiary { color: var(--mat-tertiary-color); }
+
+// Utilidades de espaciado consistente con Material
+.m-2 { margin: 0.5rem; }
+.m-4 { margin: 1rem; }
+.p-2 { padding: 0.5rem; }
+.p-4 { padding: 1rem; }
+
+// Utilidades de layout
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
