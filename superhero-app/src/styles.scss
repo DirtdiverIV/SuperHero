@@ -1,10 +1,10 @@
 // src/styles.scss
 @use '@angular/material' as mat;
 
-// Incluimos los estilos comunes de Angular Material
+// 1. Material Theme Configuration
+// =============================
 @include mat.core();
 
-// Definimos nuestro tema personalizado
 $superhero-theme: mat.define-theme((
   color: (
     theme-type: dark,
@@ -23,15 +23,14 @@ $superhero-theme: mat.define-theme((
   )
 ));
 
-// Aplicamos el tema
 :root {
   @include mat.all-component-themes($superhero-theme);
 }
 
-// Importamos las fuentes
+// 2. Font Imports & Base Styles
+// ============================
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap');
 
-// Estilos globales
 html, body {
   height: 100%;
   margin: 0;
@@ -45,7 +44,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Utilidades y estilos personalizados
+// 3. Component Styles
+// ==================
+
+// Typography
 .hero-title {
   font-family: 'Press Start 2P', cursive;
   letter-spacing: 0.05em;
@@ -53,6 +55,7 @@ body {
   font-size: 1.5rem !important;
 }
 
+// Cards
 .hero-card {
   background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -65,6 +68,7 @@ body {
   }
 }
 
+// Chips
 .power-chip {
   background: linear-gradient(45deg, #1976d2, #2196f3);
   color: white;
@@ -74,21 +78,37 @@ body {
   box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
 }
 
-// Fix para los inputs
-.mat-mdc-text-field-wrapper {
-  background-color: #1a1a1a !important;
-}
+// 4. Material Component Overrides
+// =============================
 
+// Form Fields
+.mat-mdc-text-field-wrapper,
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
   background-color: #1a1a1a !important;
 }
 
-// Fix para el header
+// Headers
 .dashboard-header {
   background: #1a1a1a !important;
 }
 
-// Fix para los botones
+// Buttons
+.mat-mdc-button {
+  color: white !important;
+  
+  .mdc-button__label {
+    color: white !important;
+  }
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &:disabled {
+    color: rgba(255, 255, 255, 0.38) !important;
+  }
+}
+
 .mat-mdc-raised-button.mat-primary {
   --mdc-protected-button-container-color: #1976d2;
   --mdc-protected-button-label-text-color: #ffffff;
@@ -109,7 +129,6 @@ body {
   }
 }
 
-// Fix específico para el botón de crear héroe
 .create-button {
   --mdc-protected-button-container-color: #1976d2 !important;
   --mdc-protected-button-label-text-color: #ffffff !important;
@@ -127,22 +146,5 @@ body {
 
   mat-icon {
     color: white !important;
-  }
-}
-
-// Fix para el botón cancelar y otros botones base
-.mat-mdc-button {
-  color: white !important;
-  
-  .mdc-button__label {
-    color: white !important;
-  }
-
-  &:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  &:disabled {
-    color: rgba(255, 255, 255, 0.38) !important;
   }
 }

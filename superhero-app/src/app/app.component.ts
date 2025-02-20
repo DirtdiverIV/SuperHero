@@ -1,6 +1,6 @@
 // src/app/app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +11,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterLink,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -20,7 +21,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     <div class="app-container">
       <mat-toolbar class="app-toolbar">
         <div class="toolbar-content">
-          <div class="logo-section">
+          <div class="logo-section" routerLink="/" style="cursor: pointer">
             <mat-icon class="logo-icon">bolt</mat-icon>
             <span class="logo-text">{{title}}</span>
           </div>
@@ -68,6 +69,11 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
       display: flex;
       align-items: center;
       gap: 12px;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     .logo-icon {
@@ -103,5 +109,5 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
   `]
 })
 export class AppComponent {
-  title = 'Super Heroes';
+  title = 'D&M Cosplay Heroes';
 }
