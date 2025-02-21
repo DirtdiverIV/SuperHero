@@ -82,11 +82,11 @@ La aplicación estará disponible en `http://localhost:4200`
 
 Encuentra documentación detallada en nuestra [carpeta de docs](./docs):
 
-- [Guía de Arquitectura](./src/docs/ARCHITECTURE.md)
-- [Guía de Desarrollo](./src/docs/guides/DEVELOPMENT.md)
-- [Documentación de la API](.src/docs/api/SERVICES.md)
-- [Guía de Testing](./src/docs/guides/TESTING.md)
-- [Mejores Prácticas](./src/docs/development/BEST-PRACTICES.md)
+- [Guía de Arquitectura](./superhero-app/src/docs/ARCHITECTURE.md)
+- [Guía de Desarrollo](./superhero-app/src/docs/guides/DEVELOPMENT.md)
+- [Documentación de la API](./superhero-app/src/docs/api/SERVICES.md)
+- [Guía de Testing](./superhero-app/src/docs/guides/TESTING.md)
+- [Mejores Prácticas](./superhero-app/src/docs/development/BEST-PRACTICES.md)
 
 ## 🏗️ Estructura del Proyecto
 
