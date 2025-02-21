@@ -1,5 +1,5 @@
 // src/app/features/heroes/pages/hero-detail/hero-detail.component.ts
-import { Component, OnInit, OnDestroy, inject, DestroyRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HeroStore } from '../../../../core/services/state/hero.store';
@@ -11,27 +11,27 @@ import { HeroFormComponent } from '../../components/hero-form/hero-form.componen
   imports: [CommonModule, HeroFormComponent],
   template: `
     <div class="p-4">
-      <app-hero-form />
+      <app-hero-form [mode]="mode" />
     </div>
-  `
+  `,
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private heroStore = inject(HeroStore);
-  private destroyRef = inject(DestroyRef);
 
-  isEditMode = false;
+  mode: 'create' | 'edit' | 'view' = 'create';
 
   ngOnInit() {
     const heroId = this.route.snapshot.paramMap.get('id');
+    const routeMode = this.route.snapshot.data['mode'];
+
     if (heroId) {
-      this.isEditMode = true;
+      this.mode = routeMode || 'edit';
       this.heroStore.loadHeroById(heroId);
     }
   }
 
   ngOnDestroy() {
-    // Limpiar el héroe seleccionado al salir usando el método público
     this.heroStore.clearSelectedHero();
   }
 }

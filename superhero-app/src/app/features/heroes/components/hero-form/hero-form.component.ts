@@ -1,5 +1,5 @@
 // src/app/features/heroes/components/hero-form/hero-form.component.ts
-import { Component, OnInit, computed, effect, inject } from '@angular/core';
+import { Component, OnInit, computed, effect, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,38 +31,35 @@ import { MatChipInputEvent } from '@angular/material/chips';
     <mat-card class="hero-form-card">
       <mat-card-header>
         <mat-card-title class="form-title">
-          {{editMode() ? 'Editar' : 'Crear'}} Héroe
+          {{getTitle()}}
         </mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
-        <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="hero-form">
+        <div [formGroup]="heroForm" class="hero-form">
           <div class="form-grid">
             <div class="form-col">
               <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Nombre</mat-label>
                 <input matInput 
                       formControlName="name" 
-                      appUppercaseInput 
+                      [attr.readonly]="mode === 'view'"
                       required>
-                @if (heroForm.get('name')?.hasError('required') && heroForm.get('name')?.touched) {
-                  <mat-error>El nombre es requerido</mat-error>
-                }
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Identidad Secreta</mat-label>
-                <input matInput formControlName="alterEgo">
+                <input matInput 
+                      formControlName="alterEgo"
+                      [attr.readonly]="mode === 'view'">
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="custom-form-field">
                 <mat-label>Editorial</mat-label>
                 <input matInput 
                       formControlName="publisher" 
+                      [attr.readonly]="mode === 'view'"
                       required>
-                @if (heroForm.get('publisher')?.hasError('required') && heroForm.get('publisher')?.touched) {
-                  <mat-error>La editorial es requerida</mat-error>
-                }
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="custom-form-field">
@@ -70,10 +67,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
                 <input matInput 
                       type="date" 
                       formControlName="firstAppearance" 
+                      [attr.readonly]="mode === 'view'"
                       required>
-                @if (heroForm.get('firstAppearance')?.hasError('required') && heroForm.get('firstAppearance')?.touched) {
-                  <mat-error>La fecha de primera aparición es requerida</mat-error>
-                }
               </mat-form-field>
             </div>
 
@@ -82,12 +77,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
                 <mat-label>URL de la imagen</mat-label>
                 <input matInput 
                       formControlName="imageUrl" 
-                      placeholder="https://ejemplo.com/imagen.jpg" 
+                      [attr.readonly]="mode === 'view'"
                       required>
-                @if (heroForm.get('imageUrl')?.hasError('required') && heroForm.get('imageUrl')?.touched) {
-                  <mat-error>La imagen es requerida</mat-error>
-                }
-                <mat-hint>La imagen debe tener un tamaño recomendado de 120x220 píxeles</mat-hint>
               </mat-form-field>
 
               <div class="preview-wrapper">
@@ -106,22 +97,32 @@ import { MatChipInputEvent } from '@angular/material/chips';
                 </div>
               </div>
 
-              <mat-form-field appearance="outline" class="custom-form-field powers-field">
-                <mat-label>Poderes</mat-label>
-                <mat-chip-grid #chipGrid aria-label="Poderes del héroe">
-                  @for (power of powers; track power) {
-                    <mat-chip-row (removed)="removePower(power)">
-                      {{power}}
-                      <button matChipRemove>
-                        <mat-icon>cancel</mat-icon>
-                      </button>
-                    </mat-chip-row>
-                  }
-                </mat-chip-grid>
-                <input placeholder="Nuevo poder..."
-                      [matChipInputFor]="chipGrid"
-                      (matChipInputTokenEnd)="addPower($event)">
-              </mat-form-field>
+              <div class="powers-section">
+                <h3>Poderes</h3>
+                @if (mode === 'view') {
+                  <div class="powers-list">
+                    @for (power of powers; track power) {
+                      <span class="power-chip">{{power}}</span>
+                    }
+                  </div>
+                } @else {
+                  <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-chip-grid #chipGrid aria-label="Poderes del héroe">
+                      @for (power of powers; track power) {
+                        <mat-chip-row (removed)="removePower(power)">
+                          {{power}}
+                          <button matChipRemove>
+                            <mat-icon>cancel</mat-icon>
+                          </button>
+                        </mat-chip-row>
+                      }
+                    </mat-chip-grid>
+                    <input placeholder="Nuevo poder..."
+                          [matChipInputFor]="chipGrid"
+                          (matChipInputTokenEnd)="addPower($event)">
+                  </mat-form-field>
+                }
+              </div>
             </div>
           </div>
 
@@ -130,17 +131,19 @@ import { MatChipInputEvent } from '@angular/material/chips';
                     type="button" 
                     (click)="goBack()"
                     [disabled]="loading()">
-              Cancelar
+              {{ mode === 'view' ? 'Volver' : 'Cancelar' }}
             </button>
-            <button mat-raised-button 
-                    color="primary" 
-                    type="submit"
-                    [disabled]="heroForm.invalid || loading()">
-              <mat-icon>{{editMode() ? 'save' : 'add'}}</mat-icon>
-              {{editMode() ? 'Actualizar' : 'Crear'}} Héroe
-            </button>
+            @if (mode !== 'view') {
+              <button mat-raised-button 
+                      color="primary" 
+                      (click)="onSubmit()"
+                      [disabled]="heroForm.invalid || loading()">
+                <mat-icon>{{editMode() ? 'save' : 'add'}}</mat-icon>
+                {{editMode() ? 'Actualizar' : 'Crear'}} Héroe
+              </button>
+            }
           </div>
-        </form>
+        </div>
       </mat-card-content>
     </mat-card>
   `,
@@ -154,10 +157,9 @@ import { MatChipInputEvent } from '@angular/material/chips';
     }
 
     .form-title {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 18px;
+      font-family: 'Bangers', cursive;
+      font-size: 24px;
       color: #ffffff;
-      text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 32px;
     }
@@ -182,12 +184,6 @@ import { MatChipInputEvent } from '@angular/material/chips';
       display: flex;
       flex-direction: column;
       gap: 1rem;
-
-      &:last-child {
-        display: grid;
-        grid-template-rows: auto auto 1fr;
-        align-content: start;
-      }
     }
 
     .preview-wrapper {
@@ -215,62 +211,37 @@ import { MatChipInputEvent } from '@angular/material/chips';
       object-fit: cover;
     }
 
-    .image-placeholder {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.5);
-      gap: 0.5rem;
-      padding: 1rem;
-
-      mat-icon {
-        font-size: 24px;
-        width: 24px;
-        height: 24px;
-      }
-
-      span {
-        font-size: 0.75rem;
-        text-align: center;
-      }
+    .powers-section {
+      margin-top: 1rem;
     }
 
-    .powers-field {
-      margin-top: 1rem;
-      flex-grow: 1;
+    .powers-section h3 {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .powers-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .power-chip {
+      background: linear-gradient(45deg, #1976d2, #2196f3);
+      color: white;
+      border-radius: 16px;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
     }
 
     .form-actions {
       display: flex;
       justify-content: flex-end;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 2rem;
       padding-top: 1rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-      button {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0 1.5rem;
-        height: 48px;
-        font-size: 1rem;
-
-        &[color="primary"] {
-          background: linear-gradient(45deg, #1976d2, #2196f3) !important;
-
-          &:hover:not(:disabled) {
-            background: linear-gradient(45deg, #1565c0, #1976d2) !important;
-          }
-        }
-      }
     }
 
     :host ::ng-deep {
@@ -284,40 +255,24 @@ import { MatChipInputEvent } from '@angular/material/chips';
         .mdc-text-field--outlined {
           --mdc-theme-primary: #2196f3;
           --mdc-theme-error: #f44336;
-          background-color: #1a1a1a !important;
-        }
-
-        .mdc-text-field__input {
-          caret-color: #2196f3;
-        }
-
-        .mdc-notched-outline__leading,
-        .mdc-notched-outline__notch,
-        .mdc-notched-outline__trailing {
-          border-color: rgba(255, 255, 255, 0.12) !important;
-        }
-
-        .mat-mdc-form-field-hint {
-          color: rgba(255, 255, 255, 0.6);
         }
 
         input {
           color: white;
         }
 
-        .mat-mdc-form-field-label {
-          color: rgba(255, 255, 255, 0.6);
+        &.mat-mdc-form-field-disabled {
+          .mat-mdc-form-field-flex {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+          }
         }
-      }
-
-      .mat-mdc-chip-set {
-        --mdc-chip-elevated-container-color: #2a2a2a;
-        --mdc-chip-label-text-color: white;
       }
     }
   `]
 })
 export class HeroFormComponent implements OnInit {
+  @Input() mode: 'create' | 'edit' | 'view' = 'create';
+
   private fb = inject(FormBuilder);
   private heroStore = inject(HeroStore);
   private router = inject(Router);
@@ -347,11 +302,19 @@ export class HeroFormComponent implements OnInit {
           imageUrl: hero.imageUrl
         });
         this.powers = [...hero.powers];
+
+        if (this.mode === 'view') {
+          this.heroForm.disable();
+        }
       }
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.mode === 'view') {
+      this.heroForm.disable();
+    }
+  }
 
   private formatDate(date: Date | string): string {
     const d = new Date(date);
@@ -359,6 +322,8 @@ export class HeroFormComponent implements OnInit {
   }
 
   addPower(event: MatChipInputEvent): void {
+    if (this.mode === 'view') return;
+    
     const value = (event.value || '').trim();
     if (value) {
       this.powers.push(value);
@@ -367,6 +332,8 @@ export class HeroFormComponent implements OnInit {
   }
 
   removePower(power: string): void {
+    if (this.mode === 'view') return;
+    
     const index = this.powers.indexOf(power);
     if (index >= 0) {
       this.powers.splice(index, 1);
@@ -379,6 +346,8 @@ export class HeroFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.mode === 'view') return;
+    
     if (this.heroForm.valid) {
       const heroData = {
         ...this.heroForm.value,
@@ -397,5 +366,16 @@ export class HeroFormComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/heroes']);
+  }
+
+  getTitle(): string {
+    switch (this.mode) {
+      case 'view':
+        return 'Detalles del Héroe';
+      case 'edit':
+        return 'Editar Héroe';
+      default:
+        return 'Crear Héroe';
+    }
   }
 }

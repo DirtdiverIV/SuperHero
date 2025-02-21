@@ -1,4 +1,4 @@
-// src/app/features/heroes/heroes.routes.ts
+// src/app/features/heroes/heroes-routes.ts
 import { Routes } from '@angular/router';
 
 export const HEROES_ROUTES: Routes = [
@@ -15,6 +15,13 @@ export const HEROES_ROUTES: Routes = [
   {
     path: 'edit/:id',
     loadComponent: () => import('./pages/hero-detail/hero-detail.component')
-                        .then(m => m.HeroDetailComponent)
+                        .then(m => m.HeroDetailComponent),
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'view/:id',
+    loadComponent: () => import('./pages/hero-detail/hero-detail.component')
+                        .then(m => m.HeroDetailComponent),
+    data: { mode: 'view' }
   }
 ];
