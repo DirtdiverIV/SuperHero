@@ -78,6 +78,16 @@ npm start
 
 La aplicación estará disponible en `http://localhost:4200`
 
+## 📚 Documentación
+
+Encuentra documentación detallada en nuestra [carpeta de docs](./docs):
+
+- [Guía de Arquitectura](./docs/ARCHITECTURE.md)
+- [Guía de Desarrollo](./docs/guides/DEVELOPMENT.md)
+- [Documentación de la API](./docs/api/SERVICES.md)
+- [Guía de Testing](./docs/guides/TESTING.md)
+- [Mejores Prácticas](./docs/development/BEST-PRACTICES.md)
+
 ## 🏗️ Estructura del Proyecto
 
 ```
@@ -132,4 +142,3 @@ export const loadingInterceptor: HttpInterceptorFn = (
 ## 🤝 Feedback
 
 Todo feedback es bienvenido.
-
