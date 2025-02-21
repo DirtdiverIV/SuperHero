@@ -39,6 +39,18 @@ Una aplicación SPA desarrollada en Angular 18 para gestionar una colección de 
 - ✅ Feedback visual de acciones
 - ✅ Animaciones y transiciones
 
+## 📚 Documentación
+
+Encuentra documentación detallada en nuestra carpeta de docs:
+
+- [Guía de Arquitectura](./superhero-app/docs/ARCHITECTURE.md)
+- [Guía de Desarrollo](./superhero-app/docs/guides/DEVELOPMENT.md)
+- [Documentación de Servicios](./superhero-app/docs/api/SERVICES.md)
+- [Documentación de Componentes](./superhero-app/docs/api/COMPONENTS.md)
+- [Guía de Testing](./superhero-app/docs/guides/TESTING.md)
+- [Mejores Prácticas](./superhero-app/docs/development/BEST-PRACTICES.md)
+- [Guía de Instalación](./superhero-app/docs/INSTALLATION.md)
+
 ## 🛠️ Tecnologías Principales
 
 - Angular 18
@@ -58,7 +70,7 @@ Una aplicación SPA desarrollada en Angular 18 para gestionar una colección de 
 1. Clonar el repositorio
 ```bash
 git clone https://github.com/tuusuario/dirtdiveriv-superhero.git
-cd dirtdiveriv-superhero
+cd dirtdiveriv-superhero/superhero-app
 ```
 
 2. Instalar dependencias
@@ -78,27 +90,20 @@ npm start
 
 La aplicación estará disponible en `http://localhost:4200`
 
-## 📚 Documentación
-
-Encuentra documentación detallada en nuestra [carpeta de docs](./docs):
-
-- [Guía de Arquitectura](./superhero-app/src/docs/ARCHITECTURE.md)
-- [Guía de Desarrollo](./superhero-app/src/docs/guides/DEVELOPMENT.md)
-- [Documentación de la API](./superhero-app/src/docs/api/SERVICES.md)
-- [Guía de Testing](./superhero-app/src/docs/guides/TESTING.md)
-- [Mejores Prácticas](./superhero-app/src/docs/development/BEST-PRACTICES.md)
-
 ## 🏗️ Estructura del Proyecto
 
 ```
-src/
-├── app/
-│   ├── core/                 # Servicios, modelos e interceptores
-│   ├── features/            # Módulos funcionales
-│   ├── shared/              # Componentes y utilidades compartidas
-│   └── app.component.ts     # Componente raíz
-├── assets/                  # Recursos estáticos
-└── environments/           # Configuraciones por entorno
+superhero-app/
+├── docs/                   # Documentación detallada
+├── src/
+│   ├── app/
+│   │   ├── core/          # Servicios, modelos e interceptores
+│   │   ├── features/      # Módulos funcionales
+│   │   ├── shared/        # Componentes y utilidades compartidas
+│   │   └── app.component.ts
+│   ├── assets/            # Recursos estáticos
+│   └── environments/      # Configuraciones por entorno
+└── mock-server/          # Servidor de desarrollo
 ```
 
 ## 🌟 Características Destacadas
