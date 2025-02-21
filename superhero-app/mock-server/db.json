@@ -8,13 +8,13 @@
         "Superfuerza",
         "Vuelo",
         "Resistencia sobrehumana",
-        "Lazo de la verdad"
+        "Lazo de la Verdad"
       ],
       "publisher": "DC Comics",
       "firstAppearance": "1941-12-01",
       "imageUrl": "https://i.imgur.com/cfoNEtO.png",
       "createdAt": "2024-02-19T12:00:00.000Z",
-      "updatedAt": "2024-02-19T12:00:00.000Z"
+      "updatedAt": "2025-02-21T15:59:24.583Z"
     },
     {
       "id": "2",
@@ -238,6 +238,20 @@
       "imageUrl": "https://i.imgur.com/XHf7UnS.png",
       "createdAt": "2024-02-19T12:00:00.000Z",
       "updatedAt": "2025-02-21T12:18:11.101Z"
+    },
+    {
+      "name": "culebras",
+      "alterEgo": "Alberto Bebe",
+      "publisher": "Aracnososft",
+      "firstAppearance": "2025-01-15",
+      "imageUrl": "https://media.licdn.com/dms/image/v2/D4D03AQGEue7desHW3Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718260111612?e=2147483647&v=beta&t=x-Pa0cUXhhO4Ede9vPAzsNXuKosH3y30fCvuaVc2oog",
+      "powers": [
+        "recibir limosna",
+        "comer lentejas"
+      ],
+      "createdAt": "2025-02-21T16:01:27.850Z",
+      "updatedAt": "2025-02-21T16:01:27.850Z",
+      "id": "vXHmsto"
     }
   ]
 }

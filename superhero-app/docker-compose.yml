@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Servicio de la aplicación Angular
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - mockserver
+
+  # Servicio del mock server
+  mockserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.mockserver
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./mock-server:/app/mock-server

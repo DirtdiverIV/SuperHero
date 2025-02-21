@@ -73,7 +73,12 @@ describe('HeroListComponent', () => {
 
   it('should navigate to edit hero', () => {
     component.editHero('1');
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/heroes', 'edit', '1']);
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/heroes/edit', '1']);
+  });
+
+  it('should navigate to view hero', () => {
+    component.viewHero('1');
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/heroes/view', '1']);
   });
 
   it('should handle page changes', () => {
