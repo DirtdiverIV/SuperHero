@@ -82,11 +82,11 @@ La aplicación estará disponible en `http://localhost:4200`
 
 Encuentra documentación detallada en nuestra [carpeta de docs](./docs):
 
-- [Guía de Arquitectura](./src/docs/ARCHITECTURE.md)
-- [Guía de Desarrollo](./src/docs/guides/DEVELOPMENT.md)
-- [Documentación de la API](.src/docs/api/SERVICES.md)
-- [Guía de Testing](./src/docs/guides/TESTING.md)
-- [Mejores Prácticas](./src/docs/development/BEST-PRACTICES.md)
+- [Guía de Arquitectura](./docs/ARCHITECTURE.md)
+- [Guía de Desarrollo](./docs/guides/DEVELOPMENT.md)
+- [Documentación de la API](./docs/api/SERVICES.md)
+- [Guía de Testing](./docs/guides/TESTING.md)
+- [Mejores Prácticas](./docs/development/BEST-PRACTICES.md)
 
 ## 🏗️ Estructura del Proyecto
 
