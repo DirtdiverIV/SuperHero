@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideRouter, Router } from '@angular/router';
-import { NO_ERRORS_SCHEMA, Component } from '@angular/core';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { provideRouter } from '@angular/router';
 import { HeroFormComponent } from './hero-form.component';
 import { HeroStore } from '../../../../core/services/state/hero.store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Router } from '@angular/router';
+import { NO_ERRORS_SCHEMA, signal } from '@angular/core';
 import { Hero } from '../../../../core/models/hero.model';
-import { signal } from '@angular/core';
 
 describe('HeroFormComponent', () => {
   let component: HeroFormComponent;
@@ -46,11 +46,12 @@ describe('HeroFormComponent', () => {
         { provide: HeroStore, useValue: heroStoreSpyObj },
         provideRouter([]),
       ],
-      schemas: [NO_ERRORS_SCHEMA], // Para ignorar componentes o directivas no relevantes
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     router = TestBed.inject(Router);
     spyOn(router, 'navigate');
+
     heroStore = TestBed.inject(HeroStore) as jasmine.SpyObj<HeroStore>;
   });
 
@@ -128,6 +129,7 @@ describe('HeroFormComponent', () => {
         firstAppearance: '2023-02-20',
         imageUrl: 'new-hero.jpg',
       });
+
       component.powers = ['Invisibility', 'Flight'];
 
       component.onSubmit();
@@ -138,6 +140,7 @@ describe('HeroFormComponent', () => {
       expect(createHeroArg.name).toBe('NEW HERO');
       expect(createHeroArg.publisher).toBe('NEW COMICS');
       expect(createHeroArg.powers).toEqual(['Invisibility', 'Flight']);
+
       expect(router.navigate).toHaveBeenCalledWith(['/heroes']);
     });
 
@@ -171,7 +174,9 @@ describe('HeroFormComponent', () => {
 
     it('should load hero data into form', () => {
       expect(component.heroForm.get('name')?.value).toBe(mockHero.name);
-      expect(component.heroForm.get('publisher')?.value).toBe(mockHero.publisher);
+      expect(component.heroForm.get('publisher')?.value).toBe(
+        mockHero.publisher
+      );
       expect(component.heroForm.get('alterEgo')?.value).toBe(mockHero.alterEgo);
       expect(component.powers).toEqual(mockHero.powers);
     });
@@ -194,6 +199,7 @@ describe('HeroFormComponent', () => {
       expect(updateArgs[0]).toBe(mockHero.id);
       expect(updateArgs[1].name).toBe('UPDATED HERO');
       expect(updateArgs[1].alterEgo).toBe('New Identity');
+
       expect(router.navigate).toHaveBeenCalledWith(['/heroes']);
     });
   });
@@ -239,7 +245,7 @@ describe('HeroFormComponent', () => {
       expect(component.powers).toEqual(initialPowers);
     });
 
-    it('should not submit form in view mode', () => {
+    it('should not submit form', () => {
       component.onSubmit();
 
       expect(heroStore.createHero).not.toHaveBeenCalled();

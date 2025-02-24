@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClient } from '@angular/common/http';
 import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import {
   provideHttpClient,
-  withInterceptorsFromDi,
+  withInterceptorsFromDi,HttpClient
 } from '@angular/common/http';
 import { HeroService } from './hero.service';
 import { environment } from '../../../../environments/environment';
@@ -15,7 +14,6 @@ import { Hero } from '../../models/hero.model';
 describe('HeroService', () => {
   let service: HeroService;
   let httpMock: HttpTestingController;
-  let httpClient: HttpClient;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,7 +25,7 @@ describe('HeroService', () => {
     });
 
     service = TestBed.inject(HeroService);
-    httpClient = TestBed.inject(HttpClient);
+ 
     httpMock = TestBed.inject(HttpTestingController);
   });
 
