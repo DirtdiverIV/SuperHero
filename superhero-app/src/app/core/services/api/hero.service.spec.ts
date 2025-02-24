@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import {
   provideHttpClient,
-  withInterceptorsFromDi,HttpClient
+  withInterceptorsFromDi
 } from '@angular/common/http';
 import { HeroService } from './hero.service';
 import { environment } from '../../../../environments/environment';

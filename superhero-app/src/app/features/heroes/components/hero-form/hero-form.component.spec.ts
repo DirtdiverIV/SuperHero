@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { HeroFormComponent } from './hero-form.component';
 import { HeroStore } from '../../../../core/services/state/hero.store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA, signal } from '@angular/core';
 import { Hero } from '../../../../core/models/hero.model';
 
