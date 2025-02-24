@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+:host ::ng-deep {
+  .custom-form-field {
+    width: 100%;
+
+    .mat-mdc-form-field-flex {
+      background-color: #1a1a1a !important;
+    }
+
+    .mdc-text-field--outlined {
+      --mdc-theme-primary: #2196f3;
+      --mdc-theme-error: #f44336;
+      background-color: #1a1a1a !important;
+    }
+
+    .mdc-text-field__input {
+      caret-color: #2196f3;
+    }
+
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    .mat-mdc-form-field-hint {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    input {
+      color: white;
+    }
+
+    .mat-mdc-form-field-label {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}

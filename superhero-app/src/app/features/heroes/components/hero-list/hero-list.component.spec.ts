@@ -1,4 +1,3 @@
-// src/app/features/heroes/components/hero-list/hero-list.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroListComponent } from './hero-list.component';
 import { HeroStore } from '../../../../core/services/state/hero.store';
@@ -28,15 +27,19 @@ describe('HeroListComponent', () => {
     firstAppearance: new Date(),
     imageUrl: 'test.jpg',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   };
 
   beforeEach(async () => {
-    const heroStoreSpy = jasmine.createSpyObj('HeroStore', ['loadHeroes', 'deleteHero'], {
-      heroes: signal([mockHero]),
-      total: signal(1),
-      filters: signal({ page: 0, pageSize: 10 })
-    });
+    const heroStoreSpy = jasmine.createSpyObj(
+      'HeroStore',
+      ['loadHeroes', 'deleteHero'],
+      {
+        heroes: signal([mockHero]),
+        total: signal(1),
+        filters: signal({ page: 0, pageSize: 10 }),
+      }
+    );
     const dialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
@@ -47,13 +50,13 @@ describe('HeroListComponent', () => {
         MatCardModule,
         MatIconModule,
         MatButtonModule,
-        MatPaginatorModule
+        MatPaginatorModule,
       ],
       providers: [
         { provide: HeroStore, useValue: heroStoreSpy },
         { provide: MatDialog, useValue: dialogSpy },
-        { provide: Router, useValue: routerSpy }
-      ]
+        { provide: Router, useValue: routerSpy },
+      ],
     }).compileComponents();
 
     heroStoreMock = TestBed.inject(HeroStore) as jasmine.SpyObj<HeroStore>;
@@ -86,13 +89,13 @@ describe('HeroListComponent', () => {
     component.onPageChange(event);
     expect(heroStoreMock.loadHeroes).toHaveBeenCalledWith({
       page: 2,
-      pageSize: 10
+      pageSize: 10,
     });
   });
 
   it('should open confirmation dialog when deleting hero', () => {
     dialogMock.open.and.returnValue({
-      afterClosed: () => of(true)
+      afterClosed: () => of(true),
     } as any);
 
     component.deleteHero('1', 'TEST HERO');
@@ -103,7 +106,7 @@ describe('HeroListComponent', () => {
 
   it('should not delete hero if dialog is dismissed', () => {
     dialogMock.open.and.returnValue({
-      afterClosed: () => of(false)
+      afterClosed: () => of(false),
     } as any);
 
     component.deleteHero('1', 'TEST HERO');

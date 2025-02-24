@@ -1,0 +1,62 @@
+<div class="heroes-grid">
+  <ng-container *ngFor="let hero of heroes(); trackBy: trackByHero">
+    <mat-card class="hero-card" (click)="viewHero(hero.id)">
+      <div class="hero-card-container">
+        <div class="hero-image-container">
+          <img
+            [src]="hero.imageUrl || '/assets/placeholder-hero.jpg'"
+            [alt]="hero.name"
+            class="hero-image"
+          />
+        </div>
+        <div class="hero-details">
+          <div class="hero-header">
+            <h2 class="hero-title">{{ hero.name }}</h2>
+            <p class="hero-publisher">{{ hero.publisher }}</p>
+            <div *ngIf="hero.alterEgo" class="alter-ego">
+              <mat-icon>face</mat-icon>
+              <span>{{ hero.alterEgo }}</span>
+            </div>
+          </div>
+          <div class="powers-section">
+            <h3>Poderes</h3>
+            <div class="powers-list">
+              <span *ngFor="let power of hero.powers" class="power-chip">{{
+                power
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-card-actions (click)="$event.stopPropagation()">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="editHero(hero.id)"
+          matTooltip="Editar héroe"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteHero(hero.id, hero.name)"
+          matTooltip="Eliminar héroe"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
+
+<mat-paginator
+  class="custom-paginator"
+  [length]="total()"
+  [pageSize]="pageSize()"
+  [pageIndex]="currentPage()"
+  [pageSizeOptions]="[9, 18, 27]"
+  (page)="onPageChange($event)"
+  aria-label="Seleccionar página"
+>
+</mat-paginator>

@@ -1,9 +1,8 @@
-// src/app/shared/directives/uppercase-input.directive.ts
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appUppercaseInput]',
-  standalone: true
+  standalone: true,
 })
 export class UppercaseInputDirective {
   constructor(private el: ElementRef) {}

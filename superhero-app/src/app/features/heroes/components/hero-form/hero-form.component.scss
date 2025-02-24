@@ -1,0 +1,120 @@
+.hero-form-card {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-title {
+  font-family: "Bangers", cursive;
+  font-size: 24px;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+}
+
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preview-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.image-preview-container {
+  width: 120px;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.powers-section {
+  margin-top: 1rem;
+}
+
+.powers-section h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.powers-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.power-chip {
+  background: linear-gradient(45deg, #1976d2, #2196f3);
+  color: white;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:host ::ng-deep {
+  .custom-form-field {
+    width: 100%;
+
+    .mat-mdc-form-field-flex {
+      background-color: #1a1a1a !important;
+    }
+
+    .mdc-text-field--outlined {
+      --mdc-theme-primary: #2196f3;
+      --mdc-theme-error: #f44336;
+    }
+
+    input {
+      color: white;
+    }
+
+    &.mat-mdc-form-field-disabled {
+      .mat-mdc-form-field-flex {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+      }
+    }
+  }
+}

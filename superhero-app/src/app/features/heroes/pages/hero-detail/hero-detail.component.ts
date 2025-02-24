@@ -1,4 +1,3 @@
-// src/app/features/heroes/pages/hero-detail/hero-detail.component.ts
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -9,11 +8,7 @@ import { HeroFormComponent } from '../../components/hero-form/hero-form.componen
   selector: 'app-hero-detail',
   standalone: true,
   imports: [CommonModule, HeroFormComponent],
-  template: `
-    <div class="p-4">
-      <app-hero-form [mode]="mode" />
-    </div>
-  `,
+  templateUrl: './hero-detail.component.html',
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);

@@ -1,4 +1,3 @@
-// src/app/core/models/hero.model.ts
 export interface Hero {
   id: string;
   name: string;

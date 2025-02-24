@@ -1,4 +1,3 @@
-// src/app/core/services/state/hero.store.spec.ts
 import { TestBed } from '@angular/core/testing';
 import { HeroStore } from './hero.store';
 import { HeroService } from '../api/hero.service';
@@ -17,7 +16,7 @@ describe('HeroStore', () => {
     firstAppearance: new Date(),
     imageUrl: 'test.jpg',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   };
 
   beforeEach(() => {
@@ -27,13 +26,10 @@ describe('HeroStore', () => {
       'searchHeroes',
       'createHero',
       'updateHero',
-      'deleteHero'
+      'deleteHero',
     ]);
     TestBed.configureTestingModule({
-      providers: [
-        HeroStore,
-        { provide: HeroService, useValue: spy }
-      ]
+      providers: [HeroStore, { provide: HeroService, useValue: spy }],
     });
 
     store = TestBed.inject(HeroStore);
@@ -45,12 +41,14 @@ describe('HeroStore', () => {
   });
 
   it('should load heroes', () => {
-    heroServiceSpy.getHeroes.and.returnValue(of({
-      data: [mockHero],
-      total: 1,
-      page: 1,
-      pageSize: 10
-    }));
+    heroServiceSpy.getHeroes.and.returnValue(
+      of({
+        data: [mockHero],
+        total: 1,
+        page: 1,
+        pageSize: 10,
+      })
+    );
 
     store.loadHeroes();
 
@@ -85,36 +83,36 @@ describe('HeroStore', () => {
     const updatedHero = { ...mockHero, name: 'UPDATED HERO' };
     heroServiceSpy.updateHero.and.returnValue(of(updatedHero));
 
-    // Primero cargamos los héroes
-    heroServiceSpy.getHeroes.and.returnValue(of({
-      data: [mockHero],
-      total: 1,
-      page: 1,
-      pageSize: 10
-    }));
+    heroServiceSpy.getHeroes.and.returnValue(
+      of({
+        data: [mockHero],
+        total: 1,
+        page: 1,
+        pageSize: 10,
+      })
+    );
     store.loadHeroes();
 
-    // Luego actualizamos
     store.updateHero('1', { name: 'UPDATED HERO' });
 
-    expect(store.heroes().find(h => h.id === '1')?.name).toBe('UPDATED HERO');
+    expect(store.heroes().find((h) => h.id === '1')?.name).toBe('UPDATED HERO');
     expect(store.loading()).toBe(false);
     expect(store.error()).toBeNull();
   });
 
   it('should delete hero', () => {
     heroServiceSpy.deleteHero.and.returnValue(of(void 0));
-    
-    // Primero cargamos los héroes
-    heroServiceSpy.getHeroes.and.returnValue(of({
-      data: [mockHero],
-      total: 1,
-      page: 1,
-      pageSize: 10
-    }));
+
+    heroServiceSpy.getHeroes.and.returnValue(
+      of({
+        data: [mockHero],
+        total: 1,
+        page: 1,
+        pageSize: 10,
+      })
+    );
     store.loadHeroes();
 
-    // Luego eliminamos
     store.deleteHero('1');
 
     expect(store.heroes().length).toBe(0);

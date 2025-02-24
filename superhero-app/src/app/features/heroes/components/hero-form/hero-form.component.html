@@ -1,0 +1,137 @@
+<mat-card class="hero-form-card">
+  <mat-card-header>
+    <mat-card-title class="form-title">
+      {{ getTitle() }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div [formGroup]="heroForm" class="hero-form">
+      <div class="form-grid">
+        <div class="form-col">
+          <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              appUppercaseInput
+              [attr.readonly]="mode === 'view'"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>Identidad Secreta</mat-label>
+            <input
+              matInput
+              formControlName="alterEgo"
+              [attr.readonly]="mode === 'view'"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>Editorial</mat-label>
+            <input
+              matInput
+              formControlName="publisher"
+              [attr.readonly]="mode === 'view'"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>Primera Aparición</mat-label>
+            <input
+              matInput
+              type="date"
+              formControlName="firstAppearance"
+              [attr.readonly]="mode === 'view'"
+              required
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="form-col">
+          <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>URL de la imagen</mat-label>
+            <input
+              matInput
+              formControlName="imageUrl"
+              [attr.readonly]="mode === 'view'"
+              required
+            />
+          </mat-form-field>
+
+          <div class="preview-wrapper">
+            <div class="image-preview-container">
+              @if (heroForm.get('imageUrl')?.value) {
+              <img
+                [src]="heroForm.get('imageUrl')?.value"
+                alt="Preview"
+                class="image-preview"
+                (error)="handleImageError($event)"
+              />
+              } @else {
+              <div class="image-placeholder">
+                <mat-icon>image</mat-icon>
+                <span>120 x 220</span>
+              </div>
+              }
+            </div>
+          </div>
+
+          <div class="powers-section">
+            <h3>Poderes</h3>
+            @if (mode === 'view') {
+            <div class="powers-list">
+              @for (power of powers; track power) {
+              <span class="power-chip">{{ power }}</span>
+              }
+            </div>
+            } @else {
+            <mat-form-field appearance="outline" class="custom-form-field">
+              <mat-chip-grid #chipGrid aria-label="Poderes del héroe">
+                @for (power of powers; track power) {
+                <mat-chip-row (removed)="removePower(power)">
+                  {{ power }}
+                  <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+                }
+              </mat-chip-grid>
+              <input
+                placeholder="Nuevo poder..."
+                [matChipInputFor]="chipGrid"
+                (matChipInputTokenEnd)="addPower($event)"
+              />
+            </mat-form-field>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          mat-button
+          type="button"
+          (click)="goBack()"
+          [disabled]="loading()"
+        >
+          {{ mode === "view" ? "Volver" : "Cancelar" }}
+        </button>
+        @if (mode !== 'view') {
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit()"
+          [disabled]="heroForm.invalid || loading()"
+        >
+          <mat-icon>{{ editMode() ? "save" : "add" }}</mat-icon>
+          {{ editMode() ? "Actualizar" : "Crear" }} Héroe
+        </button>
+        }
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

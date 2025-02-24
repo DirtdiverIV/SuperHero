@@ -1,4 +1,3 @@
-// src/app/features/heroes/heroes-routes.ts
 import { Routes } from '@angular/router';
 
 export const HEROES_ROUTES: Routes = [

@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="title-section">
+        <h1 class="hero-title">Galería de Héroes</h1>
+        <p class="subtitle">Descubre y gestiona tu colección de superhéroes</p>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createHero()"
+        class="create-button"
+      >
+        <mat-icon>add</mat-icon>
+        Nuevo Héroe
+      </button>
+    </div>
+    <app-hero-search class="search-section" />
+  </div>
+
+  <app-hero-list />
+</div>
