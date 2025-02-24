@@ -16,13 +16,12 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { HeroStore } from '../../../../core/services/state/hero.store';
 import { UppercaseInputDirective } from '../../../../shared/directives/uppercase-input.directive';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { MatChipsModule, MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-hero-form',

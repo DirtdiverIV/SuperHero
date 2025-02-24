@@ -11,6 +11,7 @@ export const loadingInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ) => {
+  
   const loadingService = inject(LoadingService);
   const loadingTimeout = setTimeout(() => loadingService.show(), 100);
 

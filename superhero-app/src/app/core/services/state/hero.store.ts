@@ -7,7 +7,7 @@ import {
   DestroyRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Hero, HeroFilters } from '../../models/hero.model';
 import { HeroService } from '../api/hero.service';
 import { environment } from '../../../../environments/environment';

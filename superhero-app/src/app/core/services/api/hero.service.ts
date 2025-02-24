@@ -18,7 +18,7 @@ export class HeroService {
       .set('_page', filters.page.toString())
       .set('_limit', filters.pageSize.toString())
 
-      .set('name_like', filters.name || '');
+      .set('name_like', filters.name ?? '');
 
     return this.http
       .get<Hero[]>(this.apiUrl, {
