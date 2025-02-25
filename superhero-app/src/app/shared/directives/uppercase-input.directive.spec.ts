@@ -15,7 +15,6 @@ describe('UppercaseInputDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent],
-
       imports: [UppercaseInputDirective],
     });
     fixture = TestBed.createComponent(TestComponent);
@@ -35,9 +34,8 @@ describe('UppercaseInputDirective', () => {
   });
 
   it('should not modify the actual value of the input', () => {
-    (inputEl as HTMLInputElement).value = 'test';
+    inputEl.value = 'test';
     inputEl.dispatchEvent(new Event('input'));
-
-    expect((inputEl as HTMLInputElement).value).toBe('test');
+    expect(inputEl.value).toBe('test');
   });
 });
